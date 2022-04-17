@@ -1,10 +1,26 @@
 package com.codeclan.example.pirateservice.Models;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="pirates")
 public class Pirate {
 
-    String firstName;
-    String lastName;
-    int age;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "age")
+    private int age;
 
     public Pirate(String firstName, String lastName, int age) {
         this.firstName = firstName;
@@ -12,6 +28,18 @@ public class Pirate {
         this.age = age;
     }
 
+    public Pirate() {
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long newId) {
+        id = newId;
+    }
+    
     public String getFirstName() {
         return this.firstName;
     }
